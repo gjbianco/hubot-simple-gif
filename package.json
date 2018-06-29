@@ -1,0 +1,15 @@
+{
+  "name": "hubot-simple-gif",
+  "version": "1.0.0",
+  "description": "simple gif searching",
+  "main": "index.js",
+  "repository": "https://github.com/gjbianco/hubot-simple-gif",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guy Bianco IV <gjbiancoiv@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
