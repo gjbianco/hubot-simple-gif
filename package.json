@@ -1,6 +1,6 @@
 {
   "name": "hubot-simple-gif",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "simple gif searching",
   "main": "index.js",
   "repository": "https://github.com/gjbianco/hubot-simple-gif",
