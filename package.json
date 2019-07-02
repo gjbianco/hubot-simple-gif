@@ -5,11 +5,14 @@
   "main": "index.js",
   "repository": "https://github.com/gjbianco/hubot-simple-gif",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Guy Bianco IV <gjbiancoiv@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "~0.18.1"
+  },
+  "devDependencies": {
+    "jest": "~24.8.0"
   }
 }
