@@ -1,5 +1,5 @@
-var axios = require('axios')
-var apiKey = process.env.GIPHY_API_TOKEN
+const axios = require('axios');
+const apiKey = process.env.GIPHY_API_TOKEN;
 
 function weightedRand(spec) {
   const r = Math.random();
@@ -13,17 +13,17 @@ function weightedRand(spec) {
 module.exports = (robot) => {
 
   robot.hear(/^!gif (.*)$/i, (res) => {
-    axios.get('http://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&q=' + res.match[1])
+    const query = escape(res.match[1]);
+    axios.get(`http://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}`)
       .then((result) => {
-        const gifList = result.data.data
-        const rand = weightedRand([0.5, 0.25, 0.12, 0.12, 0.01]);
-        const randGif = gifList[rand]
-
-        if (randGif) {
-          res.send(randGif.url)
-        } else {
-          res.send('sorry, no results :(')
+        const gifs = result.data.data;
+        let toSend = 'sorry, no results :(';
+        if (gifs.length) {
+          const weights = [0.5, 0.25, 0.12, 0.12, 0.01].slice(0, gifs.length);
+          const rand = weightedRand(weights);
+          toSend = gifs[rand];
         }
+        return res.send(toSend);
       })
   })
 
