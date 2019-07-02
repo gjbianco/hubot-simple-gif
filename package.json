@@ -16,6 +16,7 @@
     "axios": "~0.18.1"
   },
   "devDependencies": {
+    "codecov": "^3.5.0",
     "jest": "~24.8.0"
   }
 }
