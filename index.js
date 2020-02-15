@@ -21,10 +21,11 @@
  */
 const getGif = require('./src/hubot-simple-gif').getGif;
 module.exports = robot => {
-  robot.hear(/^!gif (.*)$/i, res => {
-    const query = escape(res.match[1]);
+  robot.hear(/^!gif((?:safe)?) (.*)$/i, res => {
+    const isSafe = !!res.match[1];
+    const query = escape(res.match[2]);
     getGif(query)
-      .then(response => res.send(response))
+      .then(response => res.send(`${ isSafe ? '/spoiler ' : '' }${response}`))
       .catch(err => {
         console.error(`got an error processing query "${query}": ${err}`);
         res.send('error occurred trying to giphy D:');
