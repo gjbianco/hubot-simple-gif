@@ -25,7 +25,7 @@ module.exports = robot => {
     const isSafe = !!res.match[1];
     const query = escape(res.match[2]);
     getGif(query)
-      .then(response => res.send(isSafe ? `||${response}||` : response))
+      .then(response => res.send(isSafe ? `|| ${response} ||` : response))
       .catch(err => {
         console.error(`got an error processing query "${query}": ${err}`);
         res.send('error occurred trying to giphy D:');
