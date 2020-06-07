@@ -7,11 +7,15 @@ const apiKey = process.env.GIPHY_API_TOKEN;
  */
 function _weightedRand(spec) {
   const r = Math.random();
+  let total = 0;
   let sum = 0;
   let result = '0';
   for (let i in spec) {
+    total += spec[i];
+  }
+  for (let i in spec) {
     sum += spec[i];
-    if (r <= sum) result = i;
+    if (r <= sum / total) result = i;
   }
   return result;
 }
@@ -24,7 +28,7 @@ function _processGifList(gifs) {
   if (gifs.length) {
     const weights = [0.5, 0.25, 0.12, 0.12, 0.01].slice(0, gifs.length);
     const rand = _weightedRand(weights);
-    return gifs[rand].url;
+    return `${gifs[rand].url}${rand === 4 ? '\n\nyou are the 1%' : ''}`;
   } else {
     return 'sorry, no results :(';
   }

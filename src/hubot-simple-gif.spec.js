@@ -14,6 +14,10 @@ describe('hubot-simple-gif', () => {
     it('should return values bound to size of spec array', () => {
       expect(sut._weightedRand([0.5])).toBe('0');
     });
+
+    it('should return a value even if results dont add up to 100%', () => {
+      expect(sut._weightedRand([0, 0.01, 0])).toBe('1');
+    });
   });
 
   describe('#_processGif', () => {
